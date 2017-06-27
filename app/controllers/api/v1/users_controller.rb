@@ -12,7 +12,8 @@ class Api::V1::UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
-    render json: user
+    userBooks = user.books
+    render json: user.as_json(include: :books)
   end
   #
   # def update
