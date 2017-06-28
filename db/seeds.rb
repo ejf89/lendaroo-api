@@ -14,7 +14,7 @@ require 'faker'
 end
 
 20.times do
-  Book.create(title: Faker::Book.title, author: Faker::Book.author, description: Faker::Hipster.paragraph, rating: Faker::Number.between(1, 5).to_i)
+  Book.create(title: Faker::Book.title, author: Faker::Book.author, description: Faker::Hipster.paragraph, image_url: 'Projects/Lendaroo/lendr_api/public/smiley.jpg', rating: Faker::Number.between(1, 5).to_i)
 end
 
 
