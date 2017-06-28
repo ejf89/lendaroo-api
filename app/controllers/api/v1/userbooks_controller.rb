@@ -7,7 +7,8 @@ class Api::V1::UserbooksController < ApplicationController
 
   def create
     userBook = UserBook.create(userbook_params)
-    render json: userBook
+    newBook = Book.find(userBook.book_id)
+    render json: newBook
   end
 
   private
