@@ -8,6 +8,7 @@ class Api::V1::UserbooksController < ApplicationController
   def create
     userBook = UserBook.create(userbook_params)
     newBook = Book.find(userBook.book_id)
+    byebug
     render json: newBook
   end
 

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :null_session
+  helper_method :current_user
 
   private
 
@@ -11,6 +12,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     3
+      # @current_user ||= User.find_by(id: user_id)
   end
 
 end

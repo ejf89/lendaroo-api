@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-
+# http://www.freeiconspng.com/uploads/book-icon-black-good-galleries--24.jpg
 require 'faker'
 
 20.times do
