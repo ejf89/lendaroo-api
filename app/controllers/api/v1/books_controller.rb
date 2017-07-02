@@ -10,7 +10,7 @@ class Api::V1::BooksController < ApplicationController
         book = Book.find_or_create_by(book)
     end
 
-     userBooks = books.map do |book|
+      userBooks = books.map do |book|
       UserBook.create(book_id: book.id, user_id: current_user)
     end
     render json: books
