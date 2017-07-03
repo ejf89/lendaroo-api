@@ -6,6 +6,11 @@ class Api::V1::UserbooksController < ApplicationController
   end
 
   def create
+    byebug
+
+    # params[:userbooks].each do |book|
+    # end
+
     userBook = UserBook.create(userbook_params)
     newBook = Book.find(userBook.book_id)
     render json: newBook
@@ -19,7 +24,8 @@ class Api::V1::UserbooksController < ApplicationController
 
   private
   def userbook_params
-    params.require(:userbook).permit(:book_id, :user_id)
+    # params.require(:userbook).permit(:book_id, :user_id)
+    params.permit!
   end
 
 end
