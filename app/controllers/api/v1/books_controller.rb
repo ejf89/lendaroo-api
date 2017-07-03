@@ -6,12 +6,12 @@ class Api::V1::BooksController < ApplicationController
   end
 
   def create
-    books = book_params[:books].map do |book|
-        book = Book.find_or_create_by(book)
-    end
+      books = book_params[:books].map do |book|
+          book = Book.find_or_create_by(book)
+      end
 
       userBooks = books.map do |book|
-      UserBook.create(book_id: book.id, user_id: current_user)
+      UserBook.create(book_id: book.id, user_id: current_user.id)
     end
     render json: books
   end
