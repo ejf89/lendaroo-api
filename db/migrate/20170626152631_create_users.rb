@@ -7,6 +7,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :bio
       t.string :picture, default: "/Users/ericfarber/Development/Projects/Lendaroo/lendr_api/app/assets/images/smiley.jpg"
       t.string :home_location
+      t.integer :loanCount
       t.timestamps
 
     end
