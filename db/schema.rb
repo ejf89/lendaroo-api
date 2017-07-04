@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626153316) do
+ActiveRecord::Schema.define(version: 20170704145636) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,9 +25,19 @@ ActiveRecord::Schema.define(version: 20170626153316) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "loans", force: :cascade do |t|
+    t.integer "giver_id"
+    t.integer "taker_id"
+    t.integer "book_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "user_books", force: :cascade do |t|
     t.integer "book_id"
     t.integer "user_id"
+    t.boolean "on_loan", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +49,7 @@ ActiveRecord::Schema.define(version: 20170626153316) do
     t.string "bio"
     t.string "picture", default: "/Users/ericfarber/Development/Projects/Lendaroo/lendr_api/app/assets/images/smiley.jpg"
     t.string "home_location"
+    t.integer "loanCount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
