@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :books
       resources :userbooks
       resources :auth
+      resources :loans
     end
   end
 end
