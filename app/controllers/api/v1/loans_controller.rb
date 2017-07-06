@@ -1,5 +1,4 @@
 class Api::V1::LoansController < ApplicationController
-  # skip_before_action :verify_authenticity_token
 
   def index
     loans = Loan.all
@@ -11,10 +10,22 @@ class Api::V1::LoansController < ApplicationController
     render json: loan
   end
 
+  def update
+    loan = Loan.find(params[:id])
+    loan.update(status: params[:status])
+    render json: loan
+  end
+
+  def destroy
+    loan = Loan.find(params[:loan_id])
+    loan.delete
+    render json: loan
+  end
+
   private
 
   def loan_params
-    params.require(:loan).permit(:giver_id, :taker_id, :book_id, :status)
+    params.require(:loan).permit(:giver_id, :taker_id, :book_id, :title, :status)
   end
 
 end
