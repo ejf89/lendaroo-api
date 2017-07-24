@@ -4,8 +4,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :username
       t.string :password_digest
       t.string :email
-      t.string :picture
-      t.string :home_location
+      t.string :bio
+      t.string :picture, default: "/Users/ericfarber/Development/Projects/Lendaroo/lendr_api/app/assets/images/smiley.jpg"
+      t.string :address
       t.timestamps
 
     end

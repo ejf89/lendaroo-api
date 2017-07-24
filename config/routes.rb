@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :users
       resources :books
       resources :userbooks
+      resources :auth
+      resources :loans
     end
   end
 end

@@ -1,5 +1,8 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :null_session
+  helper_method :current_user
+  before_action :user_id
+
 
   private
 
@@ -10,7 +13,11 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(id: user_id)
+      @current_user ||= User.find_by(id: user_id)
+  end
+
+  def user_id
+    request.headers['authorization'].to_i
   end
 
 end

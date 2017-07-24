@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170626153316) do
+ActiveRecord::Schema.define(version: 20170706233056) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,14 +19,26 @@ ActiveRecord::Schema.define(version: 20170626153316) do
     t.string "title"
     t.string "author"
     t.string "description"
+    t.string "image_url"
     t.string "rating"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "loans", force: :cascade do |t|
+    t.integer "giver_id"
+    t.integer "taker_id"
+    t.integer "book_id"
+    t.string "status", default: "pending"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "title"
+  end
+
   create_table "user_books", force: :cascade do |t|
     t.integer "book_id"
     t.integer "user_id"
+    t.boolean "on_loan", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,10 +47,13 @@ ActiveRecord::Schema.define(version: 20170626153316) do
     t.string "username"
     t.string "password_digest"
     t.string "email"
-    t.string "picture"
-    t.string "home_location"
+    t.string "bio"
+    t.string "picture", default: "/Users/ericfarber/Development/Projects/Lendaroo/lendr_api/app/assets/images/smiley.jpg"
+    t.string "address"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "latitude"
+    t.float "longitude"
   end
 
 end
