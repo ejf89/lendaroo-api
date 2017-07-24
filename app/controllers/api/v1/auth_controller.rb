@@ -1,5 +1,7 @@
 class Api::V1::AuthController < ApplicationController
 # before_action :authorize_user!, only: [:show]
+skip_before_action :verify_authenticity_token
+
 
   def show
     id = request.headers['Authorization']
